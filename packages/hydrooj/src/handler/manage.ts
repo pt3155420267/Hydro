@@ -316,6 +316,31 @@ class SystemUserPrivHandler extends SystemHandler {
     }
 }
 
+class SystemChangeUserPasswordHandler extends SystemHandler {
+    @requireSudo
+    async get() {
+        this.response.template = 'manage_user_changepassword.html';
+    }
+
+    @param('password', Types.String)
+    @param('confirmPassword', Types.String)
+    @param('userID', Types.Int, true)
+    @param('email', Types.String, true)
+    @param('username', Types.String, true)
+
+    async post(domainId: string, password: string, confirmPassword: string, userID?: number, email?: string, username?: string) {
+        let udoc = null;
+        if (password !== confirmPassword) throw new ValidationError('密码不一致！');
+        if (userID) udoc = await user.getById('system', userID);
+        else if (email) udoc = await user.getByEmail('system', email);
+        else if (username) udoc = await user.getByUname('system', username);
+        else throw new ValidationError('请填写用户信息！');
+        if (!udoc) throw new ValidationError('用户不存在！');
+        await user.setPassword(udoc._id, password);
+        this.back();
+    }
+}
+
 export async function apply(ctx) {
     ctx.Route('manage', '/manage', SystemMainHandler);
     ctx.Route('manage_dashboard', '/manage/dashboard', SystemDashboardHandler);
@@ -323,6 +348,7 @@ export async function apply(ctx) {
     ctx.Route('manage_setting', '/manage/setting', SystemSettingHandler);
     ctx.Route('manage_config', '/manage/config', SystemConfigHandler);
     ctx.Route('manage_user_import', '/manage/userimport', SystemUserImportHandler);
+    ctx.Route('manage_user_changepassword', '/manage/change-password', SystemChangeUserPasswordHandler);
     ctx.Route('manage_user_priv', '/manage/userpriv', SystemUserPrivHandler);
     ctx.Connection('manage_check', '/manage/check-conn', SystemCheckConnHandler);
 }
