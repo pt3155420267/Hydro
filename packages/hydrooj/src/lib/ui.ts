@@ -59,9 +59,6 @@ inject('Nav', 'homework_main', { prefix: 'homework' }, PERM.PERM_VIEW_HOMEWORK);
 inject('Nav', 'discussion_main', { prefix: 'discussion' }, PERM.PERM_VIEW_DISCUSSION);
 inject('Nav', 'record_main', {
     prefix: 'record',
-    query: (handler) => (handler.user.hasPriv(PRIV.PRIV_USER_PROFILE)
-        ? ({ uidOrName: handler.user._id })
-        : ({})),
 });
 inject('Nav', 'ranking', { prefix: 'ranking' }, PERM.PERM_VIEW_RANKING);
 inject('Nav', 'domain_dashboard', { prefix: 'domain' }, PERM.PERM_EDIT_DOMAIN);
