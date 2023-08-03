@@ -111,7 +111,7 @@ Telegram [@webpack_exports_undefined](https://t.me/webpack_exports_undefined)
 - ui: 修复特定情况下 markdown 标签补全出错的问题
 - import-qduoj: 检查 pid 合法性
 - core: 排序作业列表
-- ui: 修复讨论编辑显示
+- ui: 修复公告编辑显示
 - core: 导出 pwsh 函数
 - vjudge: codeforces: 修复比赛 921 爬取异常
 
@@ -122,7 +122,7 @@ Telegram [@webpack_exports_undefined](https://t.me/webpack_exports_undefined)
 - ui: 在添加用户到域的时候隐藏 default 和 guest 选项
 - core: 允许管理员筛选所有小组
 - ui: 修复语言过滤（#598）
-- ui: 修复讨论 reaction
+- ui: 修复公告 reaction
 
 ### Hydro 4.9.20 / UI 4.48.20
 - vjudge: 修复 Codeforces 提交结果获取
@@ -196,7 +196,7 @@ Telegram [@webpack_exports_undefined](https://t.me/webpack_exports_undefined)
 - core: setJudge 时添加 PRIV_UNLIMITED_ACCESS
 
 ### Hydro 4.9.12 / UI 4.48.12
-- core: 修复比赛中讨论不会随比赛删除的问题
+- core: 修复比赛中公告不会随比赛删除的问题
 - vjudge: codeforces: 更新登陆检查逻辑
 - ui: 在题目提交页面显示提示
 - core: 更新用户缓存
@@ -211,7 +211,7 @@ Telegram [@webpack_exports_undefined](https://t.me/webpack_exports_undefined)
 
 ### Hydro 4.9.8 / UI 4.48.11
 - core: 修复 strictioi 下的计分板显示问题
-- core: 允许普通用户查看比赛讨论
+- core: 允许普通用户查看比赛公告
 - core: 启动时自动建立静态资源文件夹
 - core: 允许使用其他 UI 模块
 - judge: 修复文件 IO 题目输出重定向的问题
@@ -234,7 +234,7 @@ Telegram [@webpack_exports_undefined](https://t.me/webpack_exports_undefined)
 - core: 修复部分赛制下封榜时仍能查看提交列表的问题
 
 ### Hydro 4.9.0 / UI 4.48.0
-- core: 优化讨论鉴权
+- core: 优化公告鉴权
 - judge: 优化统一回调评测状态回显
 - judge: 移除 `processTestdata` 步骤
 - judge: 客观题子任务分数回显
@@ -324,13 +324,13 @@ Telegram [@webpack_exports_undefined](https://t.me/webpack_exports_undefined)
 - ui: 默认移除首页右侧搜索模块
 - ui: 添加站内头像上传模块
 - core: 允许比赛创建者查看隐藏的计分板
-- core: 讨论更改为按照创建时间排序
+- core: 公告更改为按照创建时间排序
 - ui: 修复题解投票回显
 - core: 修复找回密码链接合成错误的问题
 - judge: 修复文件 IO 题目编译输出限制过小的问题
 - core: 修复 `%` 作为关键词会导致题目搜索出错的问题
 - core: 修复比赛题目列表下方提交记录模块不显示的问题
-- ui: 修复讨论区部分表情预设 ID 和实际图像不匹配的问题
+- ui: 修复公告区部分表情预设 ID 和实际图像不匹配的问题
 - install: 默认设置 vm.swappiness=1 以提高性能
 - ui: 允许普通用户在设置了查询条件时按页翻阅评测记录
 - ui: 提交记录列表添加取消成绩按钮
@@ -344,12 +344,12 @@ Telegram [@webpack_exports_undefined](https://t.me/webpack_exports_undefined)
 ### Hydro 4.5.1 / UI 4.45.0
 - ui: 支持全局快捷搜索
 - core: problem_list: 支持 limit 参数
-- core: 精简默认讨论节点列表
+- core: 精简默认公告节点列表
 - core: validator: 双汉字也被认为是合法用户名
 - judge: objective: 支持多答案题目
 - core: problemStat: 忽略已取消成绩的提交
-- ui: 修复讨论编辑 Ctrl+Enter 快捷键
-- ui: 修复锁定讨论主题功能
+- ui: 修复公告编辑 Ctrl+Enter 快捷键
+- ui: 修复锁定公告主题功能
 - core: 优化作业鉴权设置
 - core: 封榜功能修复
 - ui: contest: 允许手动管理参赛人员
@@ -380,7 +380,7 @@ Telegram [@webpack_exports_undefined](https://t.me/webpack_exports_undefined)
 - core: 修复比赛基于 ID 搜索题目的功能
 - judge: 修复 testlib 错误信息显示异常的问题
 - sandbox: 提高默认 stdio 限制
-- core: 修复讨论历史记录异常的问题
+- core: 修复公告历史记录异常的问题
 - core: 优化每日任务的运行速度
 - core: 用户详情页支持显示用户近期参加的比赛/作业
 - judge: 将 Bash 添加到预设语言列表
