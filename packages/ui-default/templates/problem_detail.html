@@ -77,7 +77,7 @@
             <a class="bp4-tag bp4-large bp4-minimal bp4-interactive problem__tag-item" href="{{ url('record_main', query={pid:pdoc.docId}) }}">{{ _('Tried') }}: {{ pdoc.nSubmit }}</a>
             <a class="bp4-tag bp4-large bp4-minimal bp4-interactive problem__tag-item" href="{{ url('record_main', query={pid:pdoc.docId, status:1}) }}">{{ _('Accepted') }}: {{ pdoc.nAccept if ((not tdoc) or showAccept) else '?' }}</a>
             <span class="bp4-tag bp4-large bp4-minimal problem__tag-item">{{ _('Difficulty') }}: {{ pdoc['difficulty'] or lib.difficulty(pdoc.nSubmit, pdoc.nAccept) or _('(None)') }}</span>
-            <span class="bp4-tag bp4-large bp4-minimal bp4-interactive problem__tag-item">{{ _('Uploaded By') }}: {{ user.render_inline(udoc, badge=false) }}</span>
+            <span class="bp4-tag bp4-large bp4-minimal bp4-interactive problem__tag-item">{{ _('Uploaded By') }}: {{ user.render_inline(udoc) }}</span>
           {% endif %}
           {% if pdoc.tag.length %}
             <span name="show_tags" class="bp4-tag bp4-large bp4-minimal bp4-interactive problem__tag-item nojs--hide icon icon-tag">{{ _('Tags') + '>' }}</span>

@@ -4,9 +4,16 @@
   {% if avatar %}
     <img class="small user-profile-avatar v-center" loading="lazy" src="{{ avatarUrl(udoc.avatar|default('')) }}" width="20" height="20">
   {% endif %}
+  {% if udoc.school %}
+      <a data-tooltip="学校：{{ udoc.school }}">
+        <span class="text-badge">{{ udoc.school }}</span>
+      </a>
+    {% else %}
+      <span class="text-badge" data-tooltip="该用户未填写学校信息">学校信息获取失败</span>
+  {% endif %}
   <a class="user-profile-name" href="{{ url('user_detail', uid=udoc._id) }}">
-    {% if handler.user.hasPerm(perm.PREM_VIEW_DISPLAYNAME) and udoc.displayName and udoc.displayName != udoc.uname %}
-      {{ udoc.displayName }} ({{ udoc.uname }})
+    {% if udoc.realname %}
+      {{ udoc.realname }}
     {% else %}
       {{ udoc.uname }}
     {% endif %}

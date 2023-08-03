@@ -27,9 +27,16 @@
   {% if _isPretest %}<span class="text-orange">({{ _('Pretest') }})</span>{% endif %}
   </td>
   <td class="col--submit-by">
+    {% if udoc.school %}
+       <a data-tooltip="学校：{{ udoc.school }}">
+         <span class="text-badge">{{ udoc.school }}</span>
+        </a>
+     {% else %}
+        <span class="text-badge" data-tooltip="该用户未填写学校信息">未完善</span>
+    {% endif %}
     <a href="{{ url('user_detail', uid=rdoc.uid) }}">
-      {% if handler.user.hasPerm(perm.PREM_VIEW_DISPLAYNAME) and udoc.displayName %}
-        {{ udoc.displayName }} ({{ udoc.uname }})
+      {% if udoc.realname %}
+        {{ udoc.realname }}
       {% else %}
         {{ udoc.uname }}
       {% endif %}
