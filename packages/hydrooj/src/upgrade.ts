@@ -38,10 +38,10 @@ Please use hydrooj@3 to perform these upgrades before upgrading to v4');
 
 export async function init() {
     if (!await user.getById('system', 0)) {
-        await user.create('Guest@hydro.local', 'Guest', String.random(32), 0, '127.0.0.1', PRIV.PRIV_REGISTER_USER);
+        await user.create('Guest@hydro.local', 'Guest', String.random(32), undefined, undefined, 0, '127.0.0.1', PRIV.PRIV_REGISTER_USER);
     }
     if (!await user.getById('system', 1)) {
-        await user.create('Hydro@hydro.local', 'Hydro', String.random(32), 1, '127.0.0.1', PRIV.PRIV_USER_PROFILE);
+        await user.create('Hydro@hydro.local', 'Hydro', String.random(32), undefined, undefined, 1, '127.0.0.1', PRIV.PRIV_USER_PROFILE);
     }
     const ddoc = await domain.get('system');
     if (!ddoc) await domain.add('system', 1, 'Hydro', 'Welcome to Hydro!');
@@ -83,10 +83,10 @@ const scripts: UpgradeScript[] = [
     // Write builtin users to database
     async function _32_33() {
         if (!await user.getById('system', 0)) {
-            await user.create('Guest@hydro.local', 'Guest', String.random(32), 0, '127.0.0.1', PRIV.PRIV_REGISTER_USER);
+            await user.create('Guest@hydro.local', 'Guest', String.random(32), undefined, undefined, 0, '127.0.0.1', PRIV.PRIV_REGISTER_USER);
         }
         if (!await user.getById('system', 1)) {
-            await user.create('Hydro@hydro.local', 'Hydro', String.random(32), 1, '127.0.0.1', PRIV.PRIV_USER_PROFILE);
+            await user.create('Hydro@hydro.local', 'Hydro', String.random(32), undefined, undefined, 1, '127.0.0.1', PRIV.PRIV_USER_PROFILE);
         }
         return true;
     },
