@@ -29,9 +29,9 @@
     {% endif %}
     {% if modbadge %}
       {% if udoc.hasPriv(PRIV.PRIV_MOD_BADGE) %}
-        <span class="user-profile-badge v-center badge--su" data-tooltip="{{ _('SuperUser') }}">SU</span>
+        <span class="user-profile-badge v-center badge--su" data-tooltip="{{ _('SuperUser') }}">平台超管</span>
       {% elif udoc.hasPerm(perm.PERM_MOD_BADGE) %}
-        <span class="user-profile-badge v-center badge--mod" data-tooltip="{{ _('Moderator') }}">MOD</span>
+        <span class="user-profile-badge v-center badge--mod" data-tooltip="{{ _('Moderator') }}">平台管理</span>
       {% endif %}
     {% endif %}
   {% endif %}

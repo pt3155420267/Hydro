@@ -8,7 +8,6 @@ import {
 } from '../error';
 import { Logger } from '../logger';
 import { PRIV, STATUS } from '../model/builtin';
-import domain from '../model/domain';
 import record from '../model/record';
 import * as setting from '../model/setting';
 import * as system from '../model/system';
@@ -219,17 +218,17 @@ class SystemUserImportHandler extends SystemHandler {
     @param('draft', Types.Boolean)
     async post(domainId: string, _users: string, draft: boolean) {
         const users = _users.split('\n');
-        const udocs: { email: string, username: string, password: string, displayName?: string, payload?: any }[] = [];
+        const udocs: { email: string, username: string, password: string, school: string, realname: string, payload?: any }[] = [];
         const messages = [];
         const mapping = {};
         const groups: Record<string, string[]> = {};
         for (const i in users) {
             const u = users[i];
             if (!u.trim()) continue;
-            let [email, username, password, displayName, extra] = u.split('\t').map((t) => t.trim());
+            let [email, username, password, school, realname, extra] = u.split('\t').map((t) => t.trim());
             if (!email || !username || !password) {
                 const data = u.split(',').map((t) => t.trim());
-                [email, username, password, displayName, extra] = data;
+                [email, username, password, school, realname, extra] = data;
                 if (data.length > 5) extra = data.slice(4).join(',');
             }
             if (email && username && password) {
@@ -251,7 +250,7 @@ class SystemUserImportHandler extends SystemHandler {
                         if (data.school) payload.school = data.school;
                     } catch (e) { }
                     udocs.push({
-                        email, username, password, displayName, payload,
+                        email, username, password, school, realname, payload,
                     });
                 }
             } else messages.push(`Line ${+i + 1}: Input invalid.`);
@@ -260,9 +259,8 @@ class SystemUserImportHandler extends SystemHandler {
         if (!draft) {
             for (const udoc of udocs) {
                 try {
-                    const uid = await user.create(udoc.email, udoc.username, udoc.password);
+                    const uid = await user.create(udoc.email, udoc.username, udoc.password, udoc.school, udoc.realname);
                     mapping[udoc.email] = uid;
-                    if (udoc.displayName) await domain.setUserInDomain(domainId, uid, { displayName: udoc.displayName });
                     if (udoc.payload?.school) await user.setById(uid, { school: udoc.payload.school });
                     if (udoc.payload?.studentId) await user.setById(uid, { studentId: udoc.payload.studentId });
                 } catch (e) {
