@@ -36,7 +36,6 @@
         <div class="footer__category__expander"><ul class="footer__category__list">
           <li class="footer__category__item"><a href="{{ url('wiki_help') }}">{{ _('Help') }}</a></li>
           <!--<li class="footer__category__item"><a href="#">{{ _('Blog') }}</a></li>-->
-          <li class="footer__category__item"><a href="{{ url('wiki_about', anchor='contact') }}">{{ _('QQ Group') }}</a></li>
         </ul></div>
       </div>
     </div>
@@ -46,9 +45,8 @@
         <ol class="clearfix">
           <li class="footer__extra-link-item"><a href="{{ url('wiki_about') }}">{{ _('About') }}</a></li>
           <li class="footer__extra-link-item"><a href="{{ url('wiki_about', anchor='contact') }}">{{ _('Contact Us') }}</a></li>
-          <li class="footer__extra-link-item"><a href="{{ url('wiki_about', anchor='privacy') }}">{{ _('Privacy') }}</a></li>
           <li class="footer__extra-link-item"><a href="{{ url('wiki_about', anchor='tos') }}">{{ _('Terms of Service') }}</a></li>
-          <li class="footer__extra-link-item"><a href="{{ url('wiki_about', anchor='contact') }}">{{ _('Copyright Complaint') }}</a></li>
+          <li class="footer__extra-link-item"><a href="mailto:admin@ptezoj.com">服务器安全漏洞应急响应中心</a></li>
           <li class="footer__extra-link-item nojs--hide" data-dropdown-target="#menu-footer-lang">
             <span><span class="icon icon-global"></span> Language <span class="icon icon-expand_less"></span></span>
             <ol class="dropdown-target menu" id="menu-footer-lang">
@@ -71,6 +69,7 @@
               <li class="menu__item"><a class="menu__link" href="{{ url('set_theme', theme='dark') }}">{{ _('Dark') }}</a></li>
             </ol>
           </li>
+          <li class="footer__extra-link-item">国家工信部互联网ICP网站备案号：<a href="https://beian.miit.gov.cn/">闽ICP备2021015474号-1</a></li>
         </ol>
       </div>
       <div class="footer__extra-right">
@@ -81,10 +80,10 @@
           {%- for html in (model.system.get('ui-default.footer_extra_html')|default('')).split('\n') -%}
             <li class="footer__extra-link-item">{{ html|safe }}</li>
           {%- endfor -%}
-          <li class="footer__extra-link-item">Worker {{ process.env.NODE_APP_INSTANCE }}, {{ Date.now() - handler.args.__start }}ms</li>
+          <li class="footer__extra-link-item">网页响应时间 {{ Date.now() - handler.args.__start }}ms</li>
           <!-- Prepare {{ handler.args.__prepareDone - handler.args.__prepare }}ms -->
           <!-- Method {{ handler.args.__methodDone - handler.args.__method }}ms -->
-          <li class="footer__extra-link-item">Powered by <a href="https://hydro.js.org">Hydro v{{ global.Hydro.version.hydrooj }}</a> {{ "Professional" if model.system.get('server.pro') else "Community" }}</li>
+          <li class="footer__extra-link-item">Powered by <a href="https://hydro.js.org">Hydro</a> 系统版本：<a>v{{ global.Hydro.version.hydrooj }}</a> 二次开发：莆田二中算法协会</li>
         </ol>
       </div>
     </div>
