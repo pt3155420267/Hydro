@@ -23,7 +23,7 @@
         "lint:ci": "eslint packages plugins modules --ext .ts,.tsx,.jsx",
         "lint:ui": "yarn workspace @hydrooj/ui-default lint --ext .js,.ts,.jsx,.tsx . --fix",
         "lint:ui:ci": "yarn workspace @hydrooj/ui-default lint --ext .js,.ts,.jsx,.tsx .",
-        "debug": "node --trace-warnings --async-stack-traces --trace-deprecation packages/hydrooj/bin/hydrooj --debug --template",
+        "debug": "node --trace-warnings --async-stack-traces --trace-deprecation packages/hydrooj/bin/hydrooj --template",
         "start": "packages/hydrooj/bin/hydrooj",
         "postinstall": "node build/prepare.js",
         "gen-patch": "node -r @hydrooj/utils/lib/register build/gen-patch.ts"
