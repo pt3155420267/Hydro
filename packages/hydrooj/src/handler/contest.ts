@@ -205,12 +205,6 @@ export class ContestDetailHandler extends Handler {
         const pdoc = 'pdoc' in this ? (this as any).pdoc : {};
         this.response.body.overrideNav = [
             {
-                name: 'contest_main',
-                args: {},
-                displayName: 'Back to contest list',
-                checker: () => true,
-            },
-            {
                 name: 'contest_detail',
                 displayName: this.tdoc.title,
                 args: { tid, prefix: 'contest_detail' },
