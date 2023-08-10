@@ -378,7 +378,7 @@ class UserModel {
 
     static async getListForRender(domainId: string, uids: number[]) {
         const [udocs, vudocs, dudocs] = await Promise.all([
-            UserModel.getMulti({ _id: { $in: uids } }, ['_id', 'uname', 'mail', 'avatar', 'school', 'studentId']).toArray(),
+            UserModel.getMulti({ _id: { $in: uids } }, ['_id', 'uname', 'mail', 'avatar', 'school', 'realname', 'studentId']).toArray(),
             collV.find({ _id: { $in: uids } }).toArray(),
             domain.getDomainUserMulti(domainId, uids).project({ uid: true, displayName: true }).toArray(),
         ]);
