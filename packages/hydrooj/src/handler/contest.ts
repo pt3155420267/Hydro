@@ -230,9 +230,11 @@ export class ContestDetailHandler extends Handler {
 
     @param('tid', Types.ObjectId)
     @param('code', Types.String, true)
-    async postAttend(domainId: string, tid: ObjectId, code = '') {
+    @param('verfiy', Types.String, true)
+    async postAttend(domainId: string, tid: ObjectId, code = '', verfiy = '') {
         if (contest.isDone(this.tdoc)) throw new ContestNotLiveError(tid);
         if (this.tdoc._code && code !== this.tdoc._code) throw new InvalidTokenError('Contest Invitation', code);
+        if (verfiy !== '我已同意上述条例条款并自愿接受违规处罚') throw new InvalidTokenError('Contest User Verfiy', verfiy);
         await contest.attend(domainId, tid, this.user._id);
         this.back();
     }

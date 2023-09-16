@@ -43,7 +43,7 @@
     {% if handler.user.hasPerm(perm.PERM_ATTEND_CONTEST) and handler.user.hasPriv(PRIV.PRIV_USER_PROFILE) %}
       <form action="{{ url('contest_detail', tid=tdoc.docId) }}" method="POST">
         <input type="hidden" name="operation" value="attend">
-        <button class="menu__link" {% if tdoc._code %}data-contest-code{% endif %} type="submit">
+        <button class="menu__link" {% if tdoc._code %}data-contest-code{% else %}data-contest-verfiy{% endif %} type="submit">
           <span class="icon icon-add"></span> {{ _('Attend Contest') }}
         </button>
       </form>
